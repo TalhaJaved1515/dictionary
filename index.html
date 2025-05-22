@@ -467,7 +467,7 @@ async function fetchDefinition() {
             throw new Error('Word not found or network issue.');
         }
         const data = await response.json();
-        console.log(data);
+      
         // Display results
         displayResults(data[0]);
         hideLoading();
