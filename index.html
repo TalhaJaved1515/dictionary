@@ -37,6 +37,17 @@ div{
     font-family: "Nunito", sans-serif;
  
 }
+/* Disable text selection for the entire page */;
+
+@media only screen and (max-width: 400px) {
+    body {
+        user-select: none;
+        -webkit-user-select: none; /* For Safari */
+        -moz-user-select: none;    /* For Firefox */
+        -ms-user-select: none;     /* For IE/Edge */
+    }
+}
+
  
 h2 {
     font-family: "Numans", sans-serif;
