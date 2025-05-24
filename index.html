@@ -35,7 +35,7 @@ html {
   
 div{
     font-family: "Nunito", sans-serif;
-    
+    border: 2px solid red;
 }
  
 h2 {
@@ -327,7 +327,7 @@ h1 {
         <!-- Header -->
         <div class="text-center mb-12">
             <h1
-                class="  text-4xl sm:text-4xl md:text-6xl font-bold text-gray-800 mb-4 bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+                class="  text-5xl sm:text-5xl md:text-6xl font-bold text-gray-800 mb-4 bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
                 Devioand Dictionary</h1>
             <p class="text-gray-600 text-lg">Look up any word and get its definition, pronunciation, and synonyms</p>
         </div>
@@ -337,10 +337,13 @@ h1 {
             <div class="flex flex-col sm:flex-row gap-4">
                 <input type="text" id="wordInput" placeholder="Enter a word to search..."
                     class="search-input flex-1 px-4 py-2 rounded-full border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg font-normal">
-                <button onclick="fetchDefinition()"
-                    class="search-button bg-blue-600 text-white px-6 py-4 rounded-full hover:bg-blue-700 font-normal text-lg">
-                    Search
-                </button>
+                    <div class="flex justify-center items-center w-full sm:w-auto ">
+                        <button onclick="fetchDefinition()"
+                        class="search-button bg-blue-600 text-white px-5 py-3 rounded-full hover:bg-blue-700 font-normal text-lg w-[70%] sm:w-auto">
+                        Search
+                    </button>
+                    </div>
+              
             </div>
         </div>
 
@@ -362,9 +365,9 @@ h1 {
             </div>
 
             <!-- Word Results -->
-            <div class="result-card bg-white rounded-2xl shadow-lg p-8 space-y-6 " id="wordresultscontainer">
-                <div class="flex items-center justify-between">
-                    <h2 id="name" class="text-5xl font-semibold text-gray-800"></h2>
+            <div class="result-card bg-white rounded-2xl shadow-lg sm:p-8 p-4 space-y-6 " id="wordresultscontainer">
+                <div class="flex items-center justify-between flex-wrap">
+                    <h2 id="name" class="text-5xl font-semibold text-gray-800 mr-4"></h2>
                     <button id="audioButton" class="audio-button" title="Play pronunciation">
                         <img src="download (4).png" alt="edge" class="icon">
                     </button>
@@ -467,7 +470,7 @@ async function fetchDefinition() {
             throw new Error('Word not found or network issue.');
         }
         const data = await response.json();
-      
+       console.log(data);
         // Display results
         displayResults(data[0]);
         hideLoading();
