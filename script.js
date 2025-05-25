@@ -146,10 +146,10 @@ function displayResults(data) {
             </div>
             <div class="mt-2">
                 ${definitionText1 ? `<span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                ${definitionText1}
+               1: ${definitionText1}
                 </span><br>` : ''}
                 ${definitionText2 ? `<span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                ${definitionText2}
+               2: ${definitionText2}
                 </span>` : ''}
             </div>
             `;
@@ -169,10 +169,10 @@ function displayResults(data) {
             </div>
             <div class="mt-2">
             <span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                ${definitionText1 || ''}
+               1: ${definitionText1 || ''}
             </span><br>
                 <span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                  ${definitionText2 || ''}
+                 2: ${definitionText2 || ''}
                 </span>
                
             </div>
@@ -422,10 +422,10 @@ function displayResults(data) {
             </div>
             <div class="mt-2">
             <span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                ${definitionText1 || ''}
+               1: ${definitionText1 || ''}
             </span><br>
                 <span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                  ${definitionText2 || ''}
+                 2: ${definitionText2 || ''}
                 </span>
                
             </div>
@@ -442,10 +442,10 @@ function displayResults(data) {
             </div>
             <div class="mt-2">
             <span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                ${definitionText1 || ''}
+               1: ${definitionText1 || ''}
             </span><br>
                 <span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                  ${definitionText2 || ''}
+                 2: ${definitionText2 || ''}
                 </span>
                
             </div>
