@@ -26,294 +26,9 @@
     <title>Modern Dictionary</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        
-html {
-    font-family: "Numans", sans-serif;
-    font-style: normal;
-}
-  
-div{
-    font-family: "Nunito", sans-serif;
- 
-}
-/* Disable text selection for the entire page */;
-
-@media only screen and (max-width: 600px) {
-    body {
-        user-select: none;
-        -webkit-user-select: none; /* For Safari */
-        -moz-user-select: none;    /* For Firefox */
-        -ms-user-select: none;     /* For IE/Edge */
-    }
-}
-
- 
-h2 {
-    font-family: "Numans", sans-serif;
-    font-style: normal;
-}
-
-p{
-    font-family: "Numans", sans-serif;
-    font-style: normal;
-}
-
-button {
-
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-}
-
-body {
-    font-family: "Numans", sans-serif;
-
-    font-style: normal;
-    background: linear-gradient(135deg, #f6f8fc 0%, #e9f0f7 100%);
-}
-
-h1 {
-    font-family: "Numans", sans-serif;
-
-    font-style: normal;
-}
-
-.container {
-    animation: fadeIn 0.5s ease-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.search-container {
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.search-container:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.search-input {
-    transition: all 0.3s ease;
-    font-family: "Montserrat", sans-serif;
-    
-    font-style: normal;
-}
-
-.search-input:focus {
-    transform: scale(1.01);
-}
-
-.search-button {
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.search-button:hover {
-    transform: translateY(-2px);
-}
-
-.search-button::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-.search-button:hover::after {
-    width: 300px;
-    height: 300px;
-}
-
-.result-card {
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.result-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    border-color: #e5e7eb;
-}
-
-.audio-button {
-    display: none;
-    background: #f3f4f6;
-    border-radius: 9999px;
-    padding: 0.75rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    border: 2px solid transparent;
-}
-
-.audio-button:hover {
-    transform: scale(1.1) rotate(5deg);
-    background: #efeff1;
-    border-color: #4b90fd;
-}
-
-.audio-button.playing {
-    background: #3b82f6;
-    color: white;
-    animation: pulse 2s infinite;
-}
-
-.audio-button .icon {
-    width: 24px;
-    height: 24px;
-    transition: all 0.3s ease;
-}
-
-/* Enhanced Loader Styles */
-.loader-container {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(5px);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.loader-wrapper {
-    position: relative;
-    width: 120px;
-    height: 120px;
-}
-
-.loader-circle {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 4px solid transparent;
-    border-radius: 50%;
-    animation: rotate 2s linear infinite;
-}
-
-.loader-circle:nth-child(1) {
-    border-top-color: #3b82f6;
-    animation-duration: 1.5s;
-}
-
-.loader-circle:nth-child(2) {
-    border-right-color: #60a5fa;
-    animation-duration: 2s;
-    animation-delay: 0.2s;
-}
-
-.loader-circle:nth-child(3) {
-    border-bottom-color: #93c5fd;
-    animation-duration: 2.5s;
-    animation-delay: 0.4s;
-}
-
-.loader-text {
-    margin-top: 20px;
-    font-size: 1.25rem;
-    color: #1f2937;
-    font-weight: 500;
-    text-align: center;
-    animation: pulse 1.5s ease-in-out infinite;
-}
-
-.loader-dots {
-    display: inline-block;
-    animation: dots 1.5s infinite;
-}
-
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes pulse {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.5;
-    }
-}
-
-
-
-.loader-progress {
-    width: 200px;
-    height: 4px;
-    background: #e5e7eb;
-    border-radius: 2px;
-    margin-top: 20px;
-    overflow: hidden;
-}
-
-.loader-progress-bar {
-    width: 0%;
-    height: 100%;
-
-    background: #488cfb;
-    animation: progress 2.5s ease-in-out infinite;
-}
-
-@keyframes progress {
-    0% {
-        width: 0%;
-    }
-
-    50% {
-        width: 100%;
-    }
-
-    100% {
-        width: 0%;
-    }
-}
-
-.synonym-tag {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    margin: 0.25rem;
-    background: #e5e7eb;
-    border-radius: 9999px;
-    transition: all 0.3s ease;
-}
-
-.synonym-tag:hover {
-    background: #3b82f6;
-    color: white;
-    transform: translateY(-3px);
-}
+       
     </style>
 
 </head>
@@ -348,13 +63,13 @@ h1 {
             <div class="flex flex-col sm:flex-row gap-4">
                 <input type="text" id="wordInput" placeholder="Enter a word to search..."
                     class="search-input flex-1 px-4 py-2 rounded-full border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg font-normal">
-                    <div class="flex justify-center items-center w-full sm:w-auto ">
-                        <button onclick="fetchDefinition()"
+                <div class="flex justify-center items-center w-full sm:w-auto ">
+                    <button onclick="fetchDefinition()"
                         class="search-button bg-blue-600 text-white px-5 py-3 rounded-full hover:bg-blue-700 font-normal text-lg w-[70%] sm:w-auto">
                         Search
                     </button>
-                    </div>
-              
+                </div>
+
             </div>
         </div>
 
@@ -378,7 +93,9 @@ h1 {
             <!-- Word Results -->
             <div class="result-card bg-white rounded-2xl shadow-lg sm:p-8 p-4 space-y-6 " id="wordresultscontainer">
                 <div class="flex items-center justify-between flex-wrap">
-                    <h2 id="name" class="text-3xl sm:text-5xl font-semibold text-gray-800 mr-4 break-words whitespace-normal"></h2>
+                    <h2 id="name"
+                        class="text-3xl sm:text-5xl font-semibold text-gray-800 mr-4 break-words whitespace-normal">
+                    </h2>
                     <button id="audioButton" class="audio-button" title="Play pronunciation">
                         <img src="download (4).png" alt="edge" class="icon">
                     </button>
@@ -390,8 +107,11 @@ h1 {
                         class="  border-2  p-4 rounded-2xl hover:rounded-xl transition-all duration-300 hover:shadow-lg hover:border-blue-400 hover:scale-[1.01] hover:bg-gray-50">
                         <div id="synoname" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                         </div>
+                        <div id="antonyms"
+                            class="text-gray-600 hover:text-blue-600 transition-colors duration-300 mt-5">
+                        </div>
                         <div id="partOfSpeech"
-                             class=" mt-4 text-[#ff4949]  hover:text-[#ff1111] transition-colors duration-300"></div>
+                            class=" mt-4 text-[#ff4949]  hover:text-[#ff1111] transition-colors duration-300"></div>
                         <div id="definition"
                             class="text-xl text-gray-700 leading-relaxed mt-4  transition-colors duration-300"></div>
                     </div>
@@ -399,370 +119,45 @@ h1 {
                         class="border-2 mt-6 p-4 rounded-2xl hover:rounded-xl transition-all duration-300 hover:shadow-lg hover:border-blue-400 hover:scale-[1.01] hover:bg-gray-50">
                         <div id="synoname_2" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
                         </div>
+                        <div id="antonyms_2"
+                            class="text-gray-600 hover:text-blue-600 transition-colors duration-300 mt-5">
+                        </div>
                         <div id="partOfSpeech_2"
-                        class=" mt-4 text-[#ff4949]  hover:text-[#ff1111] transition-colors duration-300"></div>
+                            class=" mt-4 text-[#ff4949]  hover:text-[#ff1111] transition-colors duration-300"></div>
                         <div id="definition_2"
                             class="text-xl text-gray-700 leading-relaxed mt-4  transition-colors duration-300"></div>
                     </div>
                     <div id="section_3"
-                    class="border-2 p-4 mt-6  rounded-2xl hover:rounded-xl transition-all duration-300 hover:shadow-lg hover:border-blue-400 hover:scale-[1.01] hover:bg-gray-50">
-                    <div id="synoname_3" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                        class="border-2 p-4 mt-6  rounded-2xl hover:rounded-xl transition-all duration-300 hover:shadow-lg hover:border-blue-400 hover:scale-[1.01] hover:bg-gray-50">
+                        <div id="synoname_3" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                        </div>
+                        <div id="antonyms_3"
+                            class="text-gray-600 hover:text-blue-600 transition-colors duration-300 mt-5">
+                        </div>
+                        <div id="partOfSpeech_3"
+                            class=" mt-4 text-[#ff4949]  hover:text-[#ff1111] transition-colors duration-300"></div>
+                        <div id="definition_3"
+                            class="text-xl text-gray-700 leading-relaxed mt-4  transition-colors duration-300"></div>
                     </div>
-                    <div id="partOfSpeech_3"
+                </div>
+                <div id="section_4"
+                    class="border-2 p-4 mt-6  rounded-2xl hover:rounded-xl transition-all duration-300 hover:shadow-lg hover:border-blue-400 hover:scale-[1.01] hover:bg-gray-50">
+                    <div id="synoname_4" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    </div>
+                    <div id="antonyms_4" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 mt-5">
+                    </div>
+                    <div id="partOfSpeech_4"
                         class=" mt-4 text-[#ff4949]  hover:text-[#ff1111] transition-colors duration-300"></div>
-                    <div id="definition_3"
+                    <div id="definition_4"
                         class="text-xl text-gray-700 leading-relaxed mt-4  transition-colors duration-300"></div>
                 </div>
-                </div> 
             </div>
         </div>
     </div>
+    </div>
 
-    <script>
-const loading = document.getElementById('loading');
-const synoname = document.getElementById('synoname');
-const name = document.getElementById('name');
-const audio = document.getElementById('audio');
-const definition = document.getElementById('definition');
-const error = document.getElementById('error');
-const results = document.getElementById('results');
-const wordresultscontainer = document.getElementById('wordresultscontainer');
-const loaderbar = document.getElementById('loaderbar');
-const partOfSpeech = document.getElementById('partOfSpeech');
-const synoname_2 = document.getElementById('synoname_2');
-const partOfSpeech_2 = document.getElementById('partOfSpeech_2');
-const definition_2 = document.getElementById('definition_2');
-const data_p_dev = document.getElementById('data_p_dev');
-const synoname_3 = document.getElementById('synoname_3');
-const partOfSpeech_3 = document.getElementById('partOfSpeech_3');
-const definition_3 = document.getElementById('definition_3');
-const section_1 = document.getElementById('section_1');
-const section_2 = document.getElementById('section_2');
-const section_3 = document.getElementById('section_3');
-
-
-
-
-let audioElement = null;
-function wordresultsshow() {
-    wordresultscontainer.style.display = 'block';
-}
-function wordresultshide() {
-    wordresultscontainer.style.display = 'none';
-}
-function showLoading() {
-    const loader = document.getElementById('loader');
-    loader.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function hideLoading() {
-    const loader = document.getElementById('loader');
-    loader.style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-async function fetchDefinition() {
-    const word = document.getElementById("wordInput").value.trim();
-    if (!word) {
-        showError('Please enter a word.');
-        return;
-    }
-
-    // Reset UI
-    resetUI();
-    showLoading();
-
-    const apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
-
-    try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-            throw new Error('Word not found or network issue.');
-        }
-        const data = await response.json();
-       console.log(data);
-        // Display results
-        displayResults(data[0]);
-        hideLoading();
-        wordresultsshow()
-
-
-
-    } catch (err) {
-        console.error(err);
-        wordresultshide()
-
-        showError('Word not found. Please try another word.');
-        console.log('there is dome error in the code.');
-        hideLoading();
-    }
-}
-wordresultshide();
-function resetUI() {
-    hideLoading();
-    error.classList.add('hidden');
-    name.innerText = '';
-    synoname.innerText = '';
-    definition.innerText = '';
-    const audioButton = document.getElementById('audioButton');
-    audioButton.style.display = 'none';
-    audioButton.classList.remove('playing');
-    if (audioElement) {
-        audioElement.pause();
-        audioElement = null;
-    }
-}
-
-function showError(message) {
-    error.classList.remove('hidden');
-    error.innerText = message;
-}
-
-function createAudioElement(url) {
-    if (audioElement) {
-        audioElement.pause();
-        audioElement = null;
-    }
-
-    audioElement = new Audio(url);
-    audioElement.volume = 1;
-
-    audioElement.addEventListener('ended', () => {
-        audioButton.classList.remove('playing');
-    });
-
-    return audioElement;
-}
-
-function handleDataVisibility(element, hasData) {
-    if (element) {
-        element.style.display = hasData ? 'block' : 'none';
-    }
-}
-
-function displayResults(data) {
-    hideLoading();
-
-    // Display word
-    name.innerText = data.word;
-
-    // Handle first meaning
-    const hasFirstMeaning = data.meanings && data.meanings[0] && data.meanings[0].definitions;
-    handleDataVisibility(definition, hasFirstMeaning);
-    if (hasFirstMeaning) {
-        const definitionText1 = data.meanings[0].definitions[0]?.definition || '';
-        const definitionText2 = data.meanings[0].definitions[1]?.definition || '';
-        if (definitionText1 || definitionText2) {
-            definition.innerHTML = `
-                    <div>
-                       <span class="font-medium text-gray-700"> Definition: </span>
-                    </div>
-                    <div class="mt-2">
-                        ${definitionText1 ? `<span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                        ${definitionText1}
-                        </span><br>` : ''}
-                        ${definitionText2 ? `<span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                        ${definitionText2}
-                        </span>` : ''}
-                    </div>
-                    `;
-        }
-    }
-
-    // Handle second meaning
-    const hasSecondMeaning = data.meanings && data.meanings[1] && data.meanings[1].definitions;
-    handleDataVisibility(definition_2, hasSecondMeaning);
-    if (hasSecondMeaning) {
-        const definitionText1 = data.meanings[1].definitions[0]?.definition || '';
-        const definitionText2 = data.meanings[1].definitions[1]?.definition || '';
-        if (definitionText1 || definitionText2) {
-            definition_2.innerHTML = `
-                    <div>
-                       <span class="font-medium text-gray-700"> Definition: </span>
-                    </div>
-                    <div class="mt-2">
-                    <span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                        ${definitionText1 || ''}
-                    </span><br>
-                        <span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                          ${definitionText2 || ''}
-                        </span>
-                       
-                    </div>
-                    `;
-        }
-    }
-
-    // Handle first meaning synonyms
-    const hasFirstSynonyms = data.meanings && data.meanings[0] && data.meanings[0].synonyms && data.meanings[0].synonyms.length > 0;
-    handleDataVisibility(synoname, hasFirstSynonyms);
-    if (hasFirstSynonyms) {
-        const synonyms = data.meanings[0].synonyms.map(synonym =>
-            `<span class="synonym-tag">${synonym}</span>`
-        ).join('');
-        synoname.innerHTML = `
-                    <div class="mb-4">
-                        <span class="font-semibold text-lg text-gray-700 font-medium">Synonyms:</span>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        ${synonyms}
-                    </div>
-                `;
-    }
-
-    // Handle second meaning synonyms
-    const hasSecondSynonyms = data.meanings && data.meanings[1] && data.meanings[1].synonyms && data.meanings[1].synonyms.length > 0;
-    handleDataVisibility(synoname_2, hasSecondSynonyms);
-    if (hasSecondSynonyms) {
-        const synonyms_1 = data.meanings[1].synonyms.map(synonym =>
-            `<span class="synonym-tag">${synonym}</span>`
-        ).join('');
-        synoname_2.innerHTML = `
-                    <div class="mb-4">
-                        <span class="font-semibold text-lg text-gray-700 font-medium">Synonyms:</span>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        ${synonyms_1}
-                    </div>
-                `;
-    }
-
-    // Handle audio
-    const audioButton = document.getElementById('audioButton');
-    const hasAudio = data.phonetics && data.phonetics.length > 0 && data.phonetics.find(phonetic => phonetic.audio)?.audio;
-    handleDataVisibility(audioButton, hasAudio);
-    if (hasAudio) {
-        const audioUrl = data.phonetics.find(phonetic => phonetic.audio)?.audio;
-        audioButton.onclick = () => {
-            if (!audioElement) {
-                audioElement = createAudioElement(audioUrl);
-            }
-
-            if (audioElement.paused) {
-                audioElement.play();
-                audioButton.classList.add('playing');
-            } else {
-                audioElement.pause();
-                audioButton.classList.remove('playing');
-            }
-        };
-    }
-
-    // Handle first meaning part of speech
-    const hasFirstPartOfSpeech = data.meanings && data.meanings[0] && data.meanings[0].partOfSpeech;
-    handleDataVisibility(partOfSpeech, hasFirstPartOfSpeech ,);
-    if (hasFirstPartOfSpeech) {
-        section_1.style.display = 'block';
-        const partOfSpeechs = data.meanings[0].partOfSpeech;
-        const word = data.word;
-        partOfSpeech.innerHTML = ` <div class="mb-4">
-                        <span class=" text-lg text-gray-700 font-medium">Part of Speech of <span class="boxes  text-[#c56cf0]" >${word}</span></span>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="transition-all duration-300 ease-in-out scale-105 shadow-md bg-gray-100 rounded-lg px-3 py-1 hover:text-black hover:scale-110 ">
-                            ${partOfSpeechs}
-                        </span>
-                    </div>`;
-    }else{
-        section_1.style.display = 'none';
-    }
-
-    // Handle second meaning part of speech
-    const hasSecondPartOfSpeech = data.meanings && data.meanings[1] && data.meanings[1].partOfSpeech;
-    handleDataVisibility(partOfSpeech, hasFirstPartOfSpeech, () => {
-        if (!hasFirstPartOfSpeech) {
-            section_2.style.border = '2px solid red';
-        }
-    });
-    if (hasSecondPartOfSpeech) {
-        section_2.style.display = 'block';
-        const partOfSpeechs_2 = data.meanings[1].partOfSpeech;
-        const word = data.word;
-        partOfSpeech_2.innerHTML = ` <div class="mb-4">
-                       <span class=" text-lg text-gray-700 font-medium">Part of Speech of <span class="boxes  text-[#c56cf0]"  >${word}</span></span>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span id="helo" class="transition-all duration-300 ease-in-out scale-105 shadow-md bg-gray-100 rounded-lg px-3 py-1 hover:text-black hover:scale-110 ">
-                            ${partOfSpeechs_2}
-                        </span>
-                    </div>`;
-                     
-                   
-                    
-                    
-    }else{
-        section_2.style.display = 'none';
-    }
-    
-    // Handle third meaning part of speech
-    const hasThirdPartOfSpeech = data.meanings && data.meanings[2] && data.meanings[2].partOfSpeech;
-    handleDataVisibility(partOfSpeech_3, hasThirdPartOfSpeech);
-    if (hasThirdPartOfSpeech) {
-        section_3.style.display = 'block';
-        const partOfSpeechs_3 = data.meanings[2].partOfSpeech;
-        const word = data.word;
-        partOfSpeech_3.innerHTML = ` <div class="mb-4">
-                       <span class=" text-lg text-gray-700 font-medium">Part of Speech of <span class="boxes  text-[#c56cf0]" >${word}</span></span>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="transition-all duration-300 ease-in-out scale-105 shadow-md bg-gray-100 rounded-lg px-3 py-1 hover:text-black hover:scale-110 ">
-                            ${partOfSpeechs_3}
-                        </span>
-                    </div>`;
-    }
-    else {
-        section_3.style.display = 'none';
-    }
-    // Handle third meaning synonyms
-    const hasThirdSynonyms = data.meanings && data.meanings[2] && data.meanings[2].synonyms && data.meanings[2].synonyms.length > 0 ;
-    handleDataVisibility(synoname_3, hasThirdSynonyms);
-    if (hasThirdSynonyms) {
-     
-        const synonyms_3 = data.meanings[2].synonyms.map(synonym =>
-            `<span class="synonym-tag">${synonym}</span>`
-        ).join('');
-        synoname_3.innerHTML = `
-                    <div class="mb-4">
-                        <span class="font-semibold text-lg text-gray-700 font-medium">Synonyms:</span>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        ${synonyms_3}
-                    </div>
-                `;
-    } 
-
-    const hasthirddefine = data.meanings && data.meanings[2] && data.meanings[2].definitions;
-    handleDataVisibility(definition_2, hasthirddefine);
-    if (hasthirddefine) {
-        const definitionText1 = data.meanings[2].definitions[0]?.definition || '';
-        const definitionText2 = data.meanings[2].definitions[1]?.definition || '';
-        if (definitionText1 || definitionText2) {
-            definition_3.innerHTML = `
-                    <div>
-                       <span class="font-medium text-gray-700"> Definition: </span>
-                    </div>
-                    <div class="mt-2">
-                    <span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                        ${definitionText1 || ''}
-                    </span><br>
-                        <span class="hover:text-blue-600 transition-colors duration-300 cursor-pointer">
-                          ${definitionText2 || ''}
-                        </span>
-                       
-                    </div>
-                    `;
-        }
-    }
-  
-}
-
-// Add enter key support
-document.getElementById('wordInput').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        fetchDefinition();
-    }
-});
+    <script src="script.js">
+       
 
 
     </script>
